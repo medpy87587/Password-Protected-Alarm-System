@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "med amine sahraoui",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -57.6, "left": -4.76, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir2", "top": 109.6, "left": 395.82, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 117.6,
+      "left": -267,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -208.8,
+      "left": 374.6,
+      "rotate": 180,
+      "attrs": { "color": "red", "bounce": "0" }
+    },
+    { "type": "wokwi-lcd2004", "id": "lcd1", "top": -320, "left": -4, "attrs": { "pins": "i2c" } },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -136.4,
+      "left": -560.8,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "pir2:VCC", "red", [ "h-4.61", "v-67.2", "h331.16", "v297.6" ] ],
+    [ "esp:GND.2", "pir2:GND", "black", [ "v-57.6", "h120.04" ] ],
+    [ "esp:23", "pir2:OUT", "green", [ "h62.44", "v-76.8", "h48" ] ],
+    [ "esp:12", "bz1:2", "magenta", [ "v0", "h-100.61", "v67.2" ] ],
+    [ "btn1:1.l", "pir2:GND", "black", [ "h-38.4", "v57.6" ] ],
+    [ "pir2:VCC", "esp:3V3.1", "red", [ "v28.8", "h-201.6" ] ],
+    [ "pir2:OUT", "esp:5", "green", [ "v19.2", "h-240.14", "v144" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-57.6", "v182.6", "h124.8", "v96" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "h-19.2", "v153.9", "h96", "v105.6" ] ],
+    [ "esp:GND.2", "bz1:1", "black", [ "v-38.4", "h-278.4", "v326.4", "h-48", "v0", "h-19.2" ] ],
+    [ "btn1:2.r", "esp:18", "green", [ "h77", "v192.2" ] ],
+    [ "keypad1:C3", "esp:27", "green", [ "v9.6", "h355.05", "v-144" ] ],
+    [ "keypad1:C2", "esp:26", "green", [ "v19.2", "h355.2", "v-153.6" ] ],
+    [ "keypad1:C1", "esp:25", "green", [ "v28.8", "h355.1", "v-182.4" ] ],
+    [ "keypad1:C4", "esp:33", "green", [ "v0", "h124.5", "v-86.4", "h153.6", "v0" ] ],
+    [ "esp:17", "keypad1:R4", "green", [ "h28.8", "v182.4", "h-556.8" ] ],
+    [ "keypad1:R3", "esp:16", "green", [ "v67.2", "h585.3", "v-182.4" ] ],
+    [ "keypad1:R2", "esp:4", "green", [ "v76.8", "h614", "v-182.4" ] ],
+    [ "keypad1:R1", "esp:0", "green", [ "v86.4", "h633.6", "v-192", "h-76.8" ] ]
+  ],
+  "dependencies": {}
+}
